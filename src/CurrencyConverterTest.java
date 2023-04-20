@@ -32,12 +32,21 @@ class CurrencyConverterTest {
         BigDecimal actualResult = converter.convert(originalAmount, conversionRate);
         assertEquals(expectedResult, actualResult);
     }    
+    
+    @Test
+    void testIsValidRateWhenOverMax() {
+        CurrencyConverter converter = new CurrencyConverter();
+        BigDecimal conversionRate = BigDecimal.valueOf(200000.00);
+        assertFalse(converter.isValidRate(conversionRate));
+    }
+    
+    @Test
+    void testIsValidRateWhenWithinRange() {
+        CurrencyConverter converter = new CurrencyConverter();
+        BigDecimal conversionRate = BigDecimal.valueOf(999.00);
+        assertTrue(converter.isValidRate(conversionRate));
+    }
+    
+    //TODO add more tests to cover partitions discussed in class for HW5
 
 }
-
-
-
-
-
-
-
