@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.RoundingMode;
 
 public class CurrencyConverter {
@@ -12,8 +13,13 @@ public class CurrencyConverter {
     }
 
     public boolean isValidRate(BigDecimal conversionRate) {
-        // TODO Add code to make the tests pass
-        return false;
+        BigDecimal min = new BigDecimal("0");
+        BigDecimal max = new BigDecimal("100000");
+        if(conversionRate.compareTo(min)== 1 && conversionRate.compareTo(max) == -1) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
 }
